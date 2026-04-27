@@ -4,6 +4,9 @@ import { useStore } from '@nanostores/react';
 import { routes } from 'virtual:routes';
 import { $router } from 'virtual:router';
 
+// Get the stylesheet URL automatically (works in dev and prod)
+import styleSheet from './client/style.css?url';
+
 // Import the API server
 import api from './server';
 
@@ -30,9 +33,10 @@ app.use(
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
+          <link rel="stylesheet" href={styleSheet} />
           <title>Hono Fullstack Template</title>
         </head>
-        <body style={{ margin: 0, padding: 0, fontFamily: 'sans-serif' }}>
+        <body className="antialiased">
           {children}
         </body>
       </html>

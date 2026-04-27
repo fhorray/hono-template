@@ -1,13 +1,7 @@
-declare module 'hono' {
-  interface ContextVariableMap {
-    // test: string
-  }
-}
-
 declare module 'virtual:routes' {
   export const routes: Array<{
     name: string;
-    component: React.ComponentType<any>
+    component: any;
   }>;
 }
 
