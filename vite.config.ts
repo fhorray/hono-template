@@ -1,7 +1,22 @@
 import { cloudflare } from '@cloudflare/vite-plugin'
 import { defineConfig } from 'vite'
-import ssrPlugin from 'vite-ssr-components/plugin'
+import react from '@vitejs/plugin-react'
+import RouterPlugin from './src/router'
+
 
 export default defineConfig({
-  plugins: [cloudflare(), ssrPlugin()]
+  ssr: {
+    external: ['react', 'react-dom'],
+  },
+  plugins: [
+    cloudflare(),
+    react(),
+    RouterPlugin()
+  ],
+  resolve: {
+    alias: {
+      'react-dom/server.edge': 'react-dom/server',
+      'react-dom/server': 'react-dom/server',
+    }
+  }
 })
