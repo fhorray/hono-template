@@ -18,7 +18,7 @@ export default function HomePage() {
             Lightweight & Native
           </div>
           <h1 className="text-5xl font-black tracking-tight text-foreground mb-4 font-sans">
-            Hono <span className="text-primary">+</span> Shadcnui UI
+            Hono <span className="text-primary">+</span> Shadcn UI
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed font-sans">
             Refactored UI components to work perfectly with Hono SSR using
@@ -122,7 +122,7 @@ export default function HomePage() {
         <footer className="mt-12 pt-8 border-t border-border text-center text-sm text-muted-foreground font-sans">
           Built with <span className="font-bold">Hono</span>,{' '}
           <span className="font-bold">Tailwind CSS 4</span>, and{' '}
-          <span className="font-bold">Shadcnui UI</span>
+          <span className="font-bold">Shadcn UI</span>
         </footer>
       </div>
     </div>
