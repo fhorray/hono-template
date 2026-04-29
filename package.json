@@ -18,6 +18,8 @@
     "@better-auth/stripe": "^1.6.9",
     "@fontsource-variable/geist": "^5.2.8",
     "@hono/react-renderer": "^1.0.1",
+    "@hono/vite-build": "^1.11.1",
+    "@hono/vite-dev-server": "^0.25.3",
     "@nanostores/react": "^1.1.0",
     "@nanostores/router": "^1.0.0",
     "@tailwindcss/vite": "^4.2.4",

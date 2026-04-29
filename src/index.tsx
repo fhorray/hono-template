@@ -67,11 +67,30 @@ const app = new Hono()
               name="viewport"
               content="width=device-width, initial-scale=1.0"
             />
+            {import.meta.env.DEV && (
+              <script
+                type="module"
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    import RefreshRuntime from '/@react-refresh'
+                    RefreshRuntime.injectIntoGlobalHook(window)
+                    window.$RefreshReg$ = () => {}
+                    window.$RefreshSig$ = () => (type) => type
+                    window.__vite_plugin_react_preamble_installed__ = true
+                  `,
+                }}
+              />
+            )}
             <link rel="stylesheet" href={styleSheet} />
             <title>Hono Fullstack Template</title>
           </head>
           <body className="antialiased">
-            {children}
+            <div id="root">{children}</div>
+            {import.meta.env.PROD ? (
+              <script type="module" src="/static/client.js"></script>
+            ) : (
+              <script type="module" src="/src/client.tsx"></script>
+            )}
           </body>
         </html>
       );

@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 
 // Custom Vite plugin for automatic File-based Routing
-export default function RouterPlugin() {
+export default function () {
   const virtualRoutesId = 'virtual:routes'
   const virtualRouterId = 'virtual:router'
   const resolvedRoutesId = '\0' + virtualRoutesId
