@@ -5,6 +5,12 @@ import { useStore } from '@nanostores/react';
 import { routes } from 'virtual:routes';
 import { $router } from 'virtual:router';
 
+// Get the stylesheet URL automatically (works in dev and prod)
+import styleSheet from './client/style.css?url';
+
+// Import the API server
+import api from './server';
+
 // Map for quick component lookup by route name
 const routeComponents: Record<string, any> = {};
 routes.forEach((r) => {
@@ -41,9 +47,6 @@ const RouterRenderer = () => {
   );
 };
 
-// Import the API server
-import api from './server';
-
 const app = new Hono()
 
   // Global Middlewares
@@ -57,16 +60,17 @@ const app = new Hono()
     '*',
     reactRenderer(({ children }) => {
       return (
-        <html>
+        <html lang="en">
           <head>
             <meta charSet="UTF-8" />
             <meta
               name="viewport"
               content="width=device-width, initial-scale=1.0"
             />
+            <link rel="stylesheet" href={styleSheet} />
             <title>Hono Fullstack Template</title>
           </head>
-          <body style={{ margin: 0, padding: 0, fontFamily: 'sans-serif' }}>
+          <body className="antialiased">
             {children}
           </body>
         </html>

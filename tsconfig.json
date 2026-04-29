@@ -17,7 +17,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["vite/client"],
+    
   },
   "include": ["src", "global.d.ts", "hono.d.ts", "worker-configuration.d.ts"]
 }

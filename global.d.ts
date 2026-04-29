@@ -1,7 +1,7 @@
 declare module 'virtual:routes' {
   export const routes: Array<{
     name: string;
-    component: React.ComponentType<any>
+    component: any;
   }>;
 }
 
