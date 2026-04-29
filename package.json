@@ -6,27 +6,32 @@
     "build": "vite build",
     "preview": "$npm_execpath run build && vite preview",
     "deploy": "$npm_execpath run build && wrangler deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv",
     "test": "vitest"
   },
   "dependencies": {
     "@hono/react-renderer": "^1.0.1",
     "@nanostores/react": "^1.1.0",
     "@nanostores/router": "^1.0.0",
+    "better-auth": "^1.6.9",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
     "hono": "^4.12.15",
     "nanostores": "^1.3.0",
     "react": "npm:@hono/react-compat",
-    "react-dom": "npm:@hono/react-compat"
+    "react-dom": "npm:@hono/react-compat",
+    "stripe": "^22.1.0"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.2.3",
     "@types/node": "^25.6.0",
     "@vitejs/plugin-react": "4",
+    "drizzle-kit": "^0.31.10",
     "jsdom": "^29.1.0",
     "vite": "^6.3.5",
     "vite-plugin-pages": "^0.33.3",
     "vite-ssr-components": "^0.5.2",
     "vitest": "^4.1.5",
-    "wrangler": "^4.17.0"
+    "wrangler": "^4.86.0"
   }
 }
