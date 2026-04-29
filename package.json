@@ -6,7 +6,7 @@
     "build": "vite build",
     "preview": "$npm_execpath run build && vite preview",
     "deploy": "$npm_execpath run build && wrangler deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv",
     "test": "vitest"
   },
   "dependencies": {
@@ -21,14 +21,14 @@
     "tailwindcss": "^4.2.4"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.2.3",
+    "@cloudflare/vite-plugin": "^1.34.0",
     "@types/node": "^25.6.0",
-    "@vitejs/plugin-react": "4",
+    "@vitejs/plugin-react": "^4.7.0",
     "jsdom": "^29.1.0",
-    "vite": "^6.3.5",
+    "vite": "^6.4.2",
     "vite-plugin-pages": "^0.33.3",
     "vite-ssr-components": "^0.5.2",
     "vitest": "^4.1.5",
-    "wrangler": "^4.17.0"
+    "wrangler": "^4.86.0"
   }
 }
