@@ -7,9 +7,14 @@
     "preview": "$npm_execpath run build && vite preview",
     "deploy": "$npm_execpath run build && wrangler deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv",
-    "test": "vitest"
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:migrate:prod": "wrangler d1 migrations apply DB --remote",
+    "db:studio": "drizzle-kit studio",
+    "auth:generate": "bunx auth@latest generate --config=src/lib/auth/server.ts --output=src/server/database/schemas/auth.ts"
   },
   "dependencies": {
+    "@better-auth/stripe": "^1.6.9",
     "@hono/react-renderer": "^1.0.1",
     "@nanostores/react": "^1.1.0",
     "@nanostores/router": "^1.0.0",
@@ -30,7 +35,6 @@
     "jsdom": "^29.1.0",
     "vite": "^6.4.2",
     "vite-ssr-components": "^0.5.2",
-    "vitest": "^4.1.5",
     "wrangler": "^4.86.0"
   }
 }

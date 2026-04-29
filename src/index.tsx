@@ -5,43 +5,11 @@ import { useStore } from '@nanostores/react';
 import { routes } from 'virtual:routes';
 import { $router } from 'virtual:router';
 
-// Import the API server
-import api from './server';
-
-const app = new Hono();
-
-app.use(contextStorage());
-
 // Map for quick component lookup by route name
 const routeComponents: Record<string, any> = {};
-routes.forEach((r: any) => {
+routes.forEach((r) => {
   routeComponents[r.name] = r.component;
 });
-
-// Mount the API server on the root
-// UI routes will be handled after this if they don't match API endpoints
-app.route('/', api);
-
-app.use(
-  '*',
-  reactRenderer(({ children }) => {
-    return (
-      <html>
-        <head>
-          <meta charSet="UTF-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
-          <title>Hono Fullstack Template</title>
-        </head>
-        <body style={{ margin: 0, padding: 0, fontFamily: 'sans-serif' }}>
-          {children}
-        </body>
-      </html>
-    );
-  }),
-);
 
 // Central routing component: Simple and Automatic
 const RouterRenderer = () => {
@@ -73,10 +41,44 @@ const RouterRenderer = () => {
   );
 };
 
-app.get('*', (c) => {
+// Import the API server
+import api from './server';
+
+const app = new Hono()
+
+  // Global Middlewares
+  .use(contextStorage())
+
+  // Mount the API server on the root
+  .route('/', api)
+
+  // Use the React renderer for all other routes
+  .use(
+    '*',
+    reactRenderer(({ children }) => {
+      return (
+        <html>
+          <head>
+            <meta charSet="UTF-8" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1.0"
+            />
+            <title>Hono Fullstack Template</title>
+          </head>
+          <body style={{ margin: 0, padding: 0, fontFamily: 'sans-serif' }}>
+            {children}
+          </body>
+        </html>
+      );
+    }),
+  )
+
   // Sync the router with the current URL (SSR)
-  $router.open(c.req.path);
-  return c.render(<RouterRenderer />);
-});
+  .get('*', (c) => {
+    $router.open(c.req.path);
+    return c.render(<RouterRenderer />);
+  });
 
 export default app;
+export type App = typeof app;
