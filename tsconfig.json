@@ -19,5 +19,5 @@
     "noImplicitReturns": true,
     "skipLibCheck": true
   },
-  "include": ["src", "global.d.ts"]
+  "include": ["src", "global.d.ts", "hono.d.ts", "worker-configuration.d.ts"]
 }

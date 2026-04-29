@@ -1,4 +1,5 @@
 import { Hono } from 'hono';
+import { contextStorage } from 'hono/context-storage';
 import { reactRenderer } from '@hono/react-renderer';
 import { useStore } from '@nanostores/react';
 import { routes } from 'virtual:routes';
@@ -8,6 +9,8 @@ import { $router } from 'virtual:router';
 import api from './server';
 
 const app = new Hono();
+
+app.use(contextStorage());
 
 // Map for quick component lookup by route name
 const routeComponents: Record<string, any> = {};
