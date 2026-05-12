@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "priority": 7,
+  "tags": ["hono", "react", "typescript"],
+  "pt": {
+    "title": "Hono Fullstack Template",
+    "description": "Template fullstack para Hono com React e roteamento baseado em arquivos configurado."
+  },
+  "en": {
+    "title": "Hono Fullstack Template",
+    "description": "A fullstack template for Hono with React and file based routing configured."
+  },
+  "cover": "/placeholder.png"
+}
